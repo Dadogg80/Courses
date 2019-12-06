@@ -1,35 +1,33 @@
-# OBLIGATORISK OPPGAVE 7 UKE 8
-# DELOPPGAVE 1
+# Week 8 - Obligatorical Assignment 7, Part 1
 
 
-# oppretter en klasse Sang
-class Sang:
-    # konstruktør som tar imot tittel og artist
-    def __init__(self, tittel, artist):
-        self._tittel = tittel
+# Make a class Song with constructor that takes attributes title and artist
+class Song:
+    def __init__(self, title, artist):
+        self._title = title
         self._artist = artist
 
     def __str__(self):
-        info = (f'Tittel: {self._tittel} | Artist: {self._artist}')
-        return info
+        string = (f'Title: {self._title} | Artist: {self._artist}')
+        return string
 
-    # metode som skriver ut tittel og artisten som spilles av
-    def spill(self):
-        print(f'Spiller sangen {self._tittel} av {self._artist}.')
+    # Method that plays the song (in this assaignmet the method only prints a string to the terminal)
+    def play(self):
+        print(f'Playing {self._title} by {self._artist}.')
 
-    # metode som sjekker om et eller flere av navnene i strengen navn finnes i _artist
-    def sjekkArtist(self, navn):
-        navnene = navn.split()
+    # Method that checks if one or more of the artist names is present in the variable self._artist
+    def checkArtist(self, name):
+        names = name.split()
         artist = self._artist.split()
-        for navn in navnene:
-            if navn in artist:
+        for name in names:
+            if name in artist:
                 return True
 
-    # metode som tar imot en sangtittel og sjekker om den stemmer med tittelen si sangen
-    def sjekkTittel(self, tittel):
-        if tittel.lower() == self._tittel.lower():
+    # Method recieves a title attribute and checks it with self._title
+    def checkTitle(self, title):
+        if title.lower() == self._title.lower():
             return True
 
-    # metode som tar imot en tittel og en artist og sjekker om det stemmer med sangen
-    def sjekkArtistogTittel(self, artist, tittel):
-        return (self.sjekkArtist(artist) == self.sjekkTittel(tittel))
+    # Method recieves the attributes artist and title, then checks it with check methods
+    def checkArtistAndTitle(self, artist, title):
+        return (self.checkArtist(artist) == self.checkTitle(title))
