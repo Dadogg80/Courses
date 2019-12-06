@@ -3,9 +3,8 @@ Assignments from different courses
 
 Courses:
 
-UIO_IN1000
-Python for nybegynnere
+- UIO_IN1000
+- Ivan on Tech Academy:
+- The Odin Project
 
-Ivan on Tech Academy:
-
-
+# ETC
