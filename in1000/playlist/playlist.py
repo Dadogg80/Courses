@@ -44,6 +44,7 @@ class Playlist:
     def getArtistSelection(self, artistName):
         newPlaylist = []
         for oneArtist in self._songs:
-            if oneArtist.checkArtist(artistName):
+            check = oneArtist.checkArtist(artistName)
+            if check:
                 newPlaylist.append(oneArtist)
-            return newPlaylist
+        return newPlaylist
