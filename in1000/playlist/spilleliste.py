@@ -1,50 +1,49 @@
-from sang import Sang
+from song import Song
 
 
-class Spilleliste:
-    def __init__(self, listenavn):
-        self._sanger = []
-        self._navn = listenavn
+class Playlist:
+    def __init__(self, playlistName):
+        self._songs = []
+        self._name = playlistName
 
-    # metoden åpner en fil og leser innholdet
-    def lesFraFil(self, filnavn):
-        with open(filnavn, 'r') as fil:
-            # for hver linje i filen
-            for linje in fil:
-                # split() linjen ved ';'
-                alleData = linje.strip().split(';')
-                nySang = Sang(alleData[0], alleData[1])
-                self.leggTilSang(nySang)
+    # Method opens a file and reads the content
+    def readFromFile(self, fileName):
+        with open(fileName, 'r') as file:
+            # for each line in file
+            for line in file:
+                # split the line at ';'
+                bits = line.strip().split(';')
+                # add song to playlist
+                self.addSong(Song(bits[0], bits[1]))
 
-    # metoden legger til nySang fra fil til spillelisten
-    def leggTilSang(self, nySang):
-        self._sanger.append(nySang)
+    # Method adds the newSong to the playlist
+    def addSong(self, newSong):
+        self._songs.append(newSong)
 
-    # metoden tar mot en sang og fjerner den sangen fra spillelisten
-    def fjernSang(self, sang):
-        if sang in self._sanger:
-            self._sanger.pop()
+    # Method removes the song from the playlist
+    def removeSong(self, song):
+        if song in self._songs:
+            self._songs.pop()
 
-    # metoden spiller av sangen
-    def spillSang(self, sang):
-        sang.spill()
+    # Method plays the song
+    def playSong(self, song):
+        song.play()
 
-    # metoden spiller av alle sangene i spillelisten
-    def spillAlle(self):
-        for enSang in self._sanger:
-            self.spillSang(enSang)
+    # Method plays all the songs in the playlist one by one
+    def playAll(self):
+        for oneSong in self._songs:
+            self.playSong(oneSong)
 
-    # metoden tar imot en sangtittel og undersøker om denne finnes i spillelisten
-    def finnSang(self, tittel):
-        for enSang in self._sanger:
-            sjekk = enSang.sjekkTittel(tittel)
-            if sjekk:
-                return enSang
+    # Method searches for a song in the playlist
+    def findSong(self, title):
+        for oneSong in self._songs:
+            if oneSong.checkTitle(title):
+                return oneSong
 
-    def hentArtistUtvalg(self, artistNavn):
-        listen = []
-        for enArtist in self._sanger:
-            sjekk = enArtist.sjekkArtist(artistNavn)
-            if sjekk:
-                listen.append(enArtist)
-        return listen
+    # Methods serches for an artist and makes a new playlist of the search results
+    def getArtistSelection(self, artistName):
+        newPlaylist = []
+        for oneArtist in self._songs:
+            if oneArtist.checkArtist(artistName):
+                newPlaylist.append(oneArtist)
+            return newPlaylist
