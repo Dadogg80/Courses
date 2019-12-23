@@ -1,0 +1,14 @@
+  VISIBILITY LEVELS IN SOLIDITY.
+
+  - PUBLIC
+        - everyone can access the function and call it.
+
+  - PRIVATE
+        - Only from within the contract.
+        - example: an other function gets it.
+
+  - EXTERNAL
+        - Only from an external contract.
+
+  - INTERNAL
+        - Private and contracts deriving from it.

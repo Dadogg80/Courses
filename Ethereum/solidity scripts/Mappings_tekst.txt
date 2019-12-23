@@ -1,0 +1,21 @@
+MAPPINGS
+
+* Mappings are "Key-Value" STORAGE.
+* Also known as 'dictionary' in other programming languages.
+* mapping(key type => value type)name;
+* mapping(address => uint)balance
+
+
+*Example Balance mapping:
+
+    *  Key - Value
+    *  address -> balance
+
+    // Create a mapping between address and balance.
+    *  mapping(address => uint)balance;
+
+    // Initiate a value to the address.
+    *  balance[address] = 20;
+
+    // This calls the address to get the balance.
+    *  balance[address];
